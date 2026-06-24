@@ -1,0 +1,152 @@
+body{
+    background:#f5f7fa;
+    font-family:Inter,sans-serif;
+}
+
+.hero{
+    min-height:70vh;
+    display:flex;
+    align-items:center;
+}
+
+.hero h1{
+    font-size:3rem;
+}
+
+.assessment-card{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    max-width:1000px;
+    margin:auto;
+}
+
+.step h3{
+    margin-bottom:25px;
+    font-weight:700;
+}
+
+.form-control,
+.form-select{
+    min-height:55px;
+    border-radius:12px;
+}
+
+.btn-primary{
+    border-radius:12px;
+    padding:12px 30px;
+}
+
+.btn-success{
+    border-radius:12px;
+    padding:12px 30px;
+}
+
+.custom-progress{
+    height:14px;
+    border-radius:30px;
+}
+
+.progress-bar{
+    background:#14b8a6;
+}
+
+.metric-card{
+    background:#f8fafc;
+    border-radius:15px;
+    padding:20px;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.metric-card h6{
+    color:#64748b;
+}
+
+.metric-card p{
+    font-size:1.5rem;
+    font-weight:700;
+}
+
+.step-indicator{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-indicator span{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#e5e7eb;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    transition:.3s;
+}
+
+.step-indicator span.active{
+    background:#14b8a6;
+    color:white;
+}
+
+.step-indicator span.completed{
+    background:#0f766e;
+    color:white;
+}
+
+.error-box{
+    background:#fee2e2;
+    color:#b91c1c;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
+.model-option{
+    border:2px solid #e5e7eb;
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:10px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.model-option:hover{
+    border-color:#14b8a6;
+}
+
+.model-option.selected{
+    border-color:#14b8a6;
+    background:#ecfeff;
+}
+
+.score-badge{
+    display:inline-block;
+    padding:8px 16px;
+    border-radius:999px;
+    color:#fff;
+    font-weight:600;
+}
+
+.score-emerging{
+    background:#dc2626;
+}
+
+.score-developing{
+    background:#ea580c;
+}
+
+.score-established{
+    background:#2563eb;
+}
+
+.score-advanced{
+    background:#16a34a;
+}
+
+.score-leading{
+    background:#14532d;
+}

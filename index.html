@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circular Economy Impact Fund Assessment Portal</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <!-- Hero -->
+    <section class="hero py-5">
+        <div class="container text-center">
+            <h1 class="display-5 fw-bold">
+                Circular Economy Impact Fund Assessment Portal
+            </h1>
+
+            <p class="lead mt-3">
+                A streamlined assessment experience for circular economy enterprises seeking funding support.
+            </p>
+
+            <button class="btn btn-success btn-lg mt-3" id="startBtn">
+                Start Assessment
+            </button>
+        </div>
+    </section>
+
+    <!-- Assessment -->
+    <section class="container-fluid py-5 d-none" id="assessmentContainer">
+
+        <!-- Progress -->
+        <div class="progress custom-progress mb-4">
+            <div class="progress-bar" id="progressBar" style="width:20%"></div>
+        </div>
+
+        <div class="step-indicator mb-3">
+          <span>1</span>
+          <span>2</span>
+          <span>3</span>
+          <span>4</span>
+          <span>5</span>
+        </div>
+            
+        <!-- STEP 1 -->
+        <div class="step" id="step1">
+          <div class="assessment-card">
+            <h3>Business Profile</h3>
+
+            <div class="model-option">
+              <input type="radio"
+                    name="circularModel"
+                    value="recovery">
+              <span>Resource Recovery</span>
+            </div>
+
+            <div class="model-option">
+              <input type="radio"
+                    name="circularModel"
+                    value="transformation">
+              <span>Waste Transformation</span>
+            </div>
+
+            <div class="model-option">
+              <input type="radio"
+                    name="circularModel"
+                    value="reuse">
+              <span>Reuse & Repair</span>
+            </div>
+
+            <div class="model-option">
+              <input type="radio"
+                    name="circularModel"
+                    value="sharing">
+              <span>Sharing & Access Models</span>
+            </div>
+
+            <div class="model-option">
+              <input type="radio"
+                    name="circularModel"
+                    value="regenerative">
+              <span>Regenerative Systems</span>
+            </div>
+
+            <div class="model-option">
+              <input type="radio"
+                    name="circularModel"
+                    value="technology">
+              <span>Circular Technology Enabler</span>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">
+                    Primary Impact Theme
+                </label>
+                <select id="impactTheme" class="form-select">
+                    <option value="">Select Primary Impact</option>
+
+                    <option>Waste Reduction</option>
+                    <option>Job Creation</option>
+                    <option>Carbon Reduction</option>
+                    <option>Water Conservation</option>
+                    <option>Biodiversity Restoration</option>
+                    <option>Food Security</option>
+                    <option>Community Development</option>
+                </select>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label class="form-label">Business Name</label>
+                    <input type="text" class="form-control" id="businessName">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Country</label>
+                    <input type="text" class="form-control" id="country">
+                </div>
+
+                
+                    <select class="form-select" id="industry">
+                      <option value="">Select Industry</option>
+
+                      <option>Agriculture</option>
+                      <option>Poultry Farming</option>
+                      <option>Crop Farming</option>
+                      <option>Recycling</option>
+                      <option>Waste Management</option>
+                      <option>Manufacturing</option>
+                      <option>Textiles</option>
+                      <option>Packaging</option>
+                      <option>Renewable Energy</option>
+                      <option>Construction</option>
+                      <option>Water Solutions</option>
+                      <option>Food Processing</option>
+                      <option>Technology</option>
+
+                      <option value="other">Other</option>
+                  </select>
+                
+                <div id="otherIndustryWrapper" class="mt-3 d-none">
+
+                    <label class="form-label">
+                        Specify Industry
+                    </label>
+
+                    <input type="text"
+                          class="form-control"
+                          id="otherIndustry">
+
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Years in Operation</label>
+                    <input type="number" class="form-control" id="yearsOperation">
+                </div>
+
+            </div>
+
+            <button class="btn btn-primary mt-4 nextBtn">
+                Continue
+            </button>
+
+            <div class="error-box d-none mt-3" id="errorBox"></div>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step d-none" id="step2">
+        <div class="assessment-card">
+          <h3>Ecosystem Mapping</h3>
+
+          <div class="mb-3">
+            <label>Primary Resource Input</label>
+
+            <select class="form-select" id="resourceInput">
+                <option value="">Select</option>
+                <option>Agricultural Waste</option>
+                <option>Industrial Waste</option>
+                <option>Household Waste</option>
+                <option>Recycled Materials</option>
+                <option>Virgin Materials</option>
+                <option>Mixed Sources</option>
+                <option value="other">Other (Specify)</option>
+            </select>
+            <div id="otherResourceWrapper"
+              class="mt-3 d-none">
+
+              <label class="form-label">
+                  Specify Resource Input
+              </label>
+
+              <input type="text"
+                    class="form-control"
+                    id="otherResource">
+
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label>Primary Output Destination</label>
+
+            <select class="form-select" id="outputDestination">
+                <option value="">Select</option>
+                <option>Consumers</option>
+                <option>Manufacturers</option>
+                <option>Distributors</option>
+                <option>Export Markets</option>
+                <option>Recycling Systems</option>
+                <option>Energy Generation</option>
+                <option value="other">Other</option>
+            </select>
+            <div id="otherOutputWrapper"
+              class="mt-3 d-none">
+
+              <label class="form-label">
+                  Specify Output Destination
+              </label>
+
+              <input type="text"
+                    class="form-control"
+                    id="otherOutput">
+
+            </div>
+          </div>
+
+          <h5 class="mt-4">Key Stakeholders</h5>
+
+          <small class="text-muted">
+              Select all that apply.
+          </small>
+
+          <div class="form-check">
+              <input type="checkbox" value="Farmers" class="stakeholder">
+              Farmers
+          </div>
+
+          <div class="form-check">
+              <input type="checkbox" value="Waste Collectors" class="stakeholder">
+              Waste Collectors
+          </div>
+
+          <div class="form-check">
+              <input type="checkbox" value="Manufacturers" class="stakeholder">
+              Manufacturers
+          </div>
+
+          <div class="form-check">
+              <input type="checkbox" value="Communities" class="stakeholder">
+              Communities
+          </div>
+
+          <div class="form-check">
+              <input type="checkbox" value="Ngos" class="stakeholder">
+              NGOs
+          </div>
+
+          <div class="form-check">
+              <input type="checkbox" value="Cooperatives" class="stakeholder">
+              Cooperatives
+          </div>
+
+          <div class="form-check">
+              <input type="checkbox" value="Retailers" class="stakeholder">
+              Retailers
+          </div>
+
+          <div class="form-check">
+              <input type="checkbox" value="Government Agencies" class="stakeholder">
+              Government Agencies
+          </div>
+
+          <div class="form-check">
+              <input type="checkbox" value="Universities" class="stakeholder">
+              Universities
+          </div>
+
+          <div class="form-check">
+              <input type="checkbox" value="Financial Institutions" class="stakeholder">
+              Financial Institutions
+          </div>
+          <div class="form-check">
+
+          <input type="checkbox"
+                    value="Other"
+                    class="stakeholder"
+                    id="otherStakeholder">
+
+              Other
+
+          </div>
+
+          <div id="otherStakeholderWrapper"
+              class="mt-2 d-none">
+
+              <input type="text"
+                    class="form-control"
+                    id="otherStakeholderText"
+                    placeholder="Specify stakeholder">
+
+          </div>
+
+              <button class="btn btn-primary mt-4 nextBtn">
+                  Continue
+              </button>
+        </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step d-none" id="step3">
+        <div class="assessment-card">
+            <h3>Circular Business DNA</h3>
+
+            <p class="text-muted">
+                Select all activities that describe your enterprise.
+                Multiple selections are allowed.
+            </p>
+
+            <div class="form-check">
+                <input class="form-check-input circularDNA"
+                      type="checkbox"
+                      value="Recover Waste">
+                Recover Waste Materials
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input circularDNA"
+                      type="checkbox"
+                      value="Repair">
+                Repair Products
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input circularDNA"
+                      type="checkbox"
+                      value="Refurbish">
+                Refurbish Products
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input circularDNA"
+                      type="checkbox"
+                      value="Remanufacture">
+                Remanufacture Products
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input circularDNA"
+                      type="checkbox"
+                      value="Recycle">
+                Recycle Materials
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input circularDNA"
+                      type="checkbox"
+                      value="Sharing">
+                Sharing Economy Models
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input circularDNA"
+                      type="checkbox"
+                      value="Regenerate">
+                Regenerate Ecosystems
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input circularDNA"
+                      type="checkbox"
+                      value="Waste To Energy">
+                Waste To Energy
+            </div>
+
+            <button class="btn btn-primary mt-4 nextBtn">
+                Continue
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="step d-none" id="step4">
+        <div class="assessment-card">
+          <h3>Business Capacity</h3>
+
+          <div class="mb-3">
+            <label>Total Gross Revenue (Last 6 Months)</label>
+            <input type="number"
+                  class="form-control"
+                  id="totalRevenue">
+          </div>
+
+          <div class="mb-3">
+            <label>Number of Employees</label>
+            <input type="number"
+                  class="form-control"
+                  id="employees">
+          </div>
+
+          <div class="mb-3">
+            <label>Enterprise Stage</label>
+
+            <select class="form-select" id="enterpriseStage">
+                <option value="">Select</option>
+                <option>Idea Stage</option>
+                <option>Pilot Stage</option>
+                <option>Early Revenue</option>
+                <option>Growth Stage</option>
+                <option>Scale Stage</option>
+                <option value="other">Other</option>
+            </select>
+            <div id="otherStageWrapper"
+              class="mt-3 d-none">
+
+              <label class="form-label">
+                  Specify Enterprise Stage
+              </label>
+
+              <input type="text"
+                    class="form-control"
+                    id="otherStage">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label>Primary Market Reach</label>
+
+            <select class="form-select" id="marketReach">
+                <option value="">Select</option>
+                <option>Local</option>
+                <option>Regional</option>
+                <option>National</option>
+                <option>International</option>
+                <option value="other">Other</option>
+            </select>
+            <div id="otherMarketWrapper"
+              class="mt-3 d-none">
+
+              <label class="form-label">
+                  Specify Market Reach
+              </label>
+
+              <input type="text"
+                    class="form-control"
+                    id="otherMarket">
+            </div>
+          </div>
+
+          <h4>Support Needed</h4>
+          <small class="text-muted">
+              Select all areas where support would be valuable.
+          </small>
+
+          <input type="checkbox" value="Funding" class="supportNeed">
+          Funding
+
+          <input type="checkbox" value="Equipment" class="supportNeed">
+          Equipment
+
+          <input type="checkbox" value="Market Access" class="supportNeed">
+          Market Access
+
+          <input type="checkbox" value="Technical Assistance" class="supportNeed">
+          Technical Assistance
+
+          <input type="checkbox" value="Partnerships" class="supportNeed">
+          Partnerships
+
+          <input type="checkbox" value="Policy Support" class="supportNeed">
+          Policy Support
+
+          <button class="btn btn-primary mt-4 nextBtn">
+            Continue
+          </button>
+        </div>
+        </div>
+
+        <!-- STEP 5 -->
+        <div class="step d-none" id="step5">
+        <div class="assessment-card">
+          <h3>Innovation & Circularity Indicators</h3>
+
+          <div class="form-check">
+              <input class="form-check-input"
+                    type="checkbox"
+                    id="wasteInput">
+              Uses waste as a primary input
+          </div>
+
+          <div class="form-check">
+              <input class="form-check-input"
+                    type="checkbox"
+                    id="traceability">
+              Has traceability systems
+          </div>
+
+          <div class="form-check">
+              <input class="form-check-input"
+                    type="checkbox"
+                    id="localJobs">
+              Creates local employment
+          </div>
+
+          <div class="form-check">
+              <input class="form-check-input"
+                    type="checkbox"
+                    id="partnerships">
+              Works with local partners
+          </div>
+
+          <div class="form-check">
+              <input class="form-check-input"
+                    type="checkbox"
+                    id="resourceEfficiency">
+              Improves resource efficiency
+          </div>
+
+          <hr>
+
+          <h4>Digital & Operational Capabilities</h4>
+
+          <div class="form-check">
+              <input class="form-check-input capability"
+                    type="checkbox"
+                    value="Digital Tracking">
+              Digital Tracking
+          </div>
+
+          <div class="form-check">
+              <input class="form-check-input capability"
+                    type="checkbox"
+                    value="Impact Measurement">
+              Impact Measurement
+          </div>
+
+          <div class="form-check">
+              <input class="form-check-input capability"
+                    type="checkbox"
+                    value="Traceability">
+              Traceability System
+          </div>
+
+          <div class="form-check">
+              <input class="form-check-input capability"
+                    type="checkbox"
+                    value="Carbon Accounting">
+              Carbon Accounting
+          </div>
+
+          <div class="form-check">
+              <input class="form-check-input capability"
+                    type="checkbox"
+                    value="Waste Tracking">
+              Waste Tracking
+          </div>
+
+          <div class="form-check">
+              <input class="form-check-input capability"
+                    type="checkbox"
+                    value="Mobile App">
+              Mobile Application
+          </div>
+
+          <hr>
+
+          <h4>Growth Constraints</h4>
+
+          <small class="text-muted">
+              Select all challenges currently affecting growth.
+          </small>
+
+          <div class="form-check">
+              <input class="form-check-input constraint"
+                    type="checkbox"
+                    value="Capital">
+              Access to Capital
+          </div>
+
+          <div class="form-check">
+              <input class="form-check-input constraint"
+                    type="checkbox"
+                    value="Equipment">
+              Equipment Costs
+          </div>
+
+          <div class="form-check">
+              <input class="form-check-input constraint"
+                    type="checkbox"
+                    value="Market Access">
+              Market Access
+          </div>
+
+          <div class="form-check">
+              <input class="form-check-input constraint"
+                    type="checkbox"
+                    value="Labour">
+              Skilled Labour
+          </div>
+
+          <div class="form-check">
+              <input class="form-check-input constraint"
+                    type="checkbox"
+                    value="Technology">
+              Technology Gaps
+          </div>
+
+          <div class="form-check">
+              <input class="form-check-input constraint"
+                    type="checkbox"
+                    value="Logistics">
+              Logistics
+          </div>
+
+          <hr>
+
+          <h4>Circularity Depth</h4>
+
+          <label class="form-label">
+          Percentage of inputs sourced from waste streams
+          </label>
+
+          <select class="form-select" id="wastePercentage">
+              <option value="">Select</option>
+              <option value="25">0-25%</option>
+              <option value="50">26-50%</option>
+              <option value="75">51-75%</option>
+              <option value="100">76-100%</option>
+          </select>
+
+          <label class="form-label mt-3">
+          Percentage of outputs recovered, reused or recycled
+          </label>
+
+          <select class="form-select" id="recoveryPercentage">
+              <option value="">Select</option>
+              <option value="25">0-25%</option>
+              <option value="50">26-50%</option>
+              <option value="75">51-75%</option>
+              <option value="100">76-100%</option>
+          </select>
+
+          <button class="btn btn-success mt-4 finishBtn">
+              Generate Intelligence Report
+          </button>
+        </div>
+        </div>
+
+        <!-- SUMMARY -->
+        <div class="step d-none" id="summary">
+
+            <h4 class="mb-4">Circular Enterprise Intelligence Report</h4>
+
+            <div class="card shadow-sm">
+
+                <div class="card-body">
+
+                    <div class="row text-center">
+
+                        <div class="metric-card">
+                            <h6>Enterprise Classification</h6>
+                            <p id="enterpriseClassification"></p>
+                        </div>
+
+                        <div class="metric-card">
+                            <h6>Business Capacity</h6>
+                            <p id="businessCapacityScore"></p>
+                        </div>
+
+                        <div class="metric-card">
+                            <h6>Circularity</h6>
+                            <p id="circularityScore"></p>
+                        </div>
+
+                        <div class="metric-card">
+                            <h6>Innovation</h6>
+                            <p id="innovationScore"></p>
+                        </div>
+
+                        <div class="metric-card">
+                            <h6>Ecosystem Strength</h6>
+                            <p id="ecosystemScore"></p>
+                        </div>
+
+                        <div class="metric-card">
+                            <h6>Resource Circularity</h6>
+                            <p id="resourceCircularity"></p>
+                        </div>
+
+                        <div class="metric-card">
+                            <h6>Digital Readiness</h6>
+                            <p id="digitalReadiness"></p>
+                        </div>
+
+                        <div class="metric-card">
+                            <h6>Risk Profile</h6>
+                            <p id="riskProfile"></p>
+                        </div>
+
+                        <div class="metric-card">
+                            <h6>Maturity Level</h6>
+                            <p id="circularitymaturity"></p>
+                        </div>
+
+                        <div class="metric-card">
+                          <h5>Ecosystem Significance</h5>
+                          <p id="ecosystemSignificance"></p>
+                        </div>
+                        
+                        <div class="metric-card">
+                          <h6>Recommended Support Path</h6>
+                          <p id="supportPath"></p>
+                        </div>
+
+                        <h5 class="mt-4">Enterprise Profile</h5>
+
+                        <ul class="list-group">
+
+                            <li class="list-group-item">
+                                <strong>Industry:</strong>
+                                <span id="industryResult"></span>
+                            </li>
+
+                            <li class="list-group-item">
+                              <strong>Primary Impact:</strong>
+                              <span id="impactThemeResult"></span>
+                            </li>
+
+                            <li class="list-group-item">
+                                <strong>Circular Model:</strong>
+                                <span id="circularModelResult"></span>
+                            </li>
+
+                            <li class="list-group-item">
+                                <strong>Resource Input:</strong>
+                                <span id="resourceInputResult"></span>
+                            </li>
+
+                            <li class="list-group-item">
+                                <strong>Output Destination:</strong>
+                                <span id="outputDestinationResult"></span>
+                            </li>
+
+                            <li class="list-group-item">
+                                <strong>Stakeholder Network:</strong>
+                                <span id="stakeholderResult"></span>
+                            </li>
+
+                            <li class="list-group-item">
+                                <strong>Circular Activities:</strong>
+                                <span id="dnaResult"></span>
+                            </li>
+
+                            <li class="list-group-item">
+                                <strong>Digital Capabilities:</strong>
+                                <span id="capabilityResult"></span>
+                            </li>
+
+                            <li class="list-group-item">
+                                <strong>Growth Constraints:</strong>
+                                <span id="constraintResult"></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <hr>
+
+                    <h5>Suggested Next Steps</h5>
+
+                    <ul>
+                        <li>Prepare supporting documentation</li>
+                        <li>Strengthen impact measurement systems</li>
+                        <li>Improve environmental reporting practices</li>
+                    </ul>
+
+                    <div class="alert alert-success mt-4">
+
+                        <h5>Platform Insights</h5>
+
+                        <p id="insightText"></p>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+<script src="assets/js/scoring.js"></script>
+<script src="assets/js/assessment.js"></script>
+
+</body>
+</html>
